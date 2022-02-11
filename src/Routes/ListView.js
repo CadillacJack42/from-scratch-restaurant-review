@@ -14,8 +14,6 @@ export default function ListView() {
     getRestaurants();
   }, []);
 
-  console.log(restaurant);
-
   return (
     <div>
       {restaurant ? (
