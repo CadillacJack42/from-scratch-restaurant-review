@@ -16,20 +16,22 @@ export default function Form() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formType);
     formType === 'in' ? handleSignIn() : handleSignUp();
   };
 
-  const handleSignUp = (e) => {
-    e.preventdefault();
-    signUpUser(userEmail, userPassword);
+  const handleSignUp = async () => {
+    const user = await signUpUser(userEmail, userPassword);
     // <Redirect to={'/'}></Redirect>;
+    console.log(user);
   };
 
-  const handleSignIn = (e) => {
-    e.preventdefault();
-    signInUser(userEmail, userPassword);
+  const handleSignIn = async () => {
+    const user = await signInUser(userEmail, userPassword);
     // <Redirect to={'/'}></Redirect>;
+    console.log(user);
   };
 
   return (
@@ -39,10 +41,15 @@ export default function Form() {
           Enter Email :<input value={userEmail} onChange={handleEmailChange}></input>
         </label>
         <label>
-          Enter Password :<input value={userPassword} onChange={handlePasswordChange}></input>
+          Enter Password :
+          <input value={userPassword} onChange={handlePasswordChange} type="password"></input>
         </label>
-        <button onClick={() => setFormType('in')}>Sign In</button>
-        <button onClick={() => setFormType('up')}>Sign Up</button>
+        <button onClick={() => setFormType('in')} type="submit">
+          Sign In
+        </button>
+        <button onClick={() => setFormType('up')} type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );
