@@ -24,14 +24,12 @@ export default function Form() {
 
   const handleSignUp = async () => {
     const user = await signUpUser(userEmail, userPassword);
-    // <Redirect to={'/'}></Redirect>;
-    console.log(user);
+    return <Redirect to={'/'}></Redirect>;
   };
 
   const handleSignIn = async () => {
     const user = await signInUser(userEmail, userPassword);
-    // <Redirect to={'/'}></Redirect>;
-    console.log(user);
+    return <Redirect to={'/'}></Redirect>;
   };
 
   return (
