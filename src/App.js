@@ -5,6 +5,7 @@ import Auth from './Routes/Auth';
 import Create from './Routes/Create';
 import Detail from './Routes/Detail';
 import ListView from './Routes/ListView';
+import Logout from './Components/Logout';
 
 function App() {
   return (
@@ -20,10 +21,13 @@ function App() {
           <Auth />
         </Route>
         <Route exact path={'/create'}>
-          <Auth />
+          <Create />
         </Route>
         <Route exact path={'/detail/:id'}>
-          <Auth />
+          <Detail />
+        </Route>
+        <Route exact path={'/logout'}>
+          <Logout />
         </Route>
       </div>
       ;
