@@ -36,3 +36,9 @@ export const createRestaurant = async (restaurant) => {
 
   return checkError(response);
 };
+
+export const fetchAllRestaurants = async () => {
+  const response = await client.from('restaurants').select();
+
+  return checkError(response);
+};
