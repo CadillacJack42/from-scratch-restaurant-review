@@ -1,6 +1,11 @@
 import React from 'react';
+import Form from '../Components/Form';
 import '../Styles/Auth.css';
 
 export default function Auth() {
-  return <div>Auth</div>;
+  return (
+    <div>
+      <Form />
+    </div>
+  );
 }

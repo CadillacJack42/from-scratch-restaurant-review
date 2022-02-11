@@ -1,5 +1,5 @@
 import './Styles/App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Components/Nav';
 import Auth from './Routes/Auth';
 import Create from './Routes/Create';
@@ -11,24 +11,26 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Route path={'/'}>
-          <Nav />
-        </Route>
-        <Route exact path={'/'}>
-          <ListView />
-        </Route>
-        <Route exact path={'/auth'}>
-          <Auth />
-        </Route>
-        <Route exact path={'/create'}>
-          <Create />
-        </Route>
-        <Route exact path={'/detail/:id'}>
-          <Detail />
-        </Route>
-        <Route exact path={'/logout'}>
-          <Logout />
-        </Route>
+        <Nav />
+        {/* <Route path={'/'}>
+        </Route> */}
+        <Switch>
+          <Route exact path={'/'}>
+            <ListView />
+          </Route>
+          <Route exact path={'/auth'}>
+            <Auth />
+          </Route>
+          <Route exact path={'/create'}>
+            <Create />
+          </Route>
+          <Route exact path={'/detail/:id'}>
+            <Detail />
+          </Route>
+          <Route exact path={'/logout'}>
+            <Logout />
+          </Route>
+        </Switch>
       </div>
       ;
     </Router>
