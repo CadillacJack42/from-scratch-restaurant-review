@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/ListView.js';
+import '../Styles/ListView.css';
 
 export default function ListView() {
   return <div>ListView</div>;
