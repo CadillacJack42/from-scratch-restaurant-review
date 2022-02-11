@@ -12,8 +12,6 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
-        {/* <Route path={'/'}>
-        </Route> */}
         <Switch>
           <Route exact path={'/'}>
             <ListView />

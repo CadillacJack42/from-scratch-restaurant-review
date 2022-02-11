@@ -42,3 +42,9 @@ export const fetchAllRestaurants = async () => {
 
   return checkError(response);
 };
+
+export const fetchRestaurantById = async (id) => {
+  const response = await client.from('restaurants').select().match({ id }).single();
+
+  return checkError(response);
+};
