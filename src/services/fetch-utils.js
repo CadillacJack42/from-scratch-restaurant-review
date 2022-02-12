@@ -19,12 +19,6 @@ export const fetchUser = () => {
   return user;
 };
 
-export const redirectIfLoggedIn = () => {
-  const user = fetchUser();
-
-  return user ? <Redirect to={'/'} /> : <Redirect to={'/auth'} />;
-};
-
 export const checkAuth = () => {
   const user = fetchUser();
 
@@ -45,6 +39,18 @@ export const fetchAllRestaurants = async () => {
 
 export const fetchRestaurantById = async (id) => {
   const response = await client.from('restaurants').select().match({ id }).single();
+
+  return checkError(response);
+};
+
+export const createReview = async (review) => {
+  const response = await client.from('reviews').insert([review]);
+
+  return checkError(response);
+};
+
+export const fetchReviews = async (id) => {
+  const response = await client.from('reviews').select().match({ restaurant: id });
 
   return checkError(response);
 };

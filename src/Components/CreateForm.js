@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { createRestaurant } from '../services/fetch-utils';
 
 export default function CreateForm() {
@@ -6,6 +7,7 @@ export default function CreateForm() {
   const [cuisine, setCuisine] = useState('');
   const [expense, setExpense] = useState('$');
   const [address, setAddress] = useState('');
+  const [refresh, setRefresh] = useState(false);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -20,7 +22,7 @@ export default function CreateForm() {
     setAddress(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newRestaurant = {
       name,
@@ -28,11 +30,13 @@ export default function CreateForm() {
       prices: expense,
       address,
     };
-    createRestaurant(newRestaurant);
+    await createRestaurant(newRestaurant);
+    setRefresh(true);
   };
 
   return (
     <div>
+      {refresh && <Redirect to={'/'} />}
       <form onSubmit={handleSubmit}>
         <label>
           Restaurant Name :<input onChange={handleNameChange} value={name}></input>

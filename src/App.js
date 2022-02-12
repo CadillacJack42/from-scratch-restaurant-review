@@ -6,31 +6,39 @@ import Create from './Routes/Create';
 import Detail from './Routes/Detail';
 import ListView from './Routes/ListView';
 import Logout from './Components/Logout';
+import { useEffect, useState } from 'react';
+import { fetchUser } from './services/fetch-utils';
 
 function App() {
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    const currentUser = fetchUser();
+    currentUser && setUser(currentUser);
+  }, [user]);
+
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Nav user={user} />
         <Switch>
           <Route exact path={'/'}>
             <ListView />
           </Route>
           <Route exact path={'/auth'}>
-            <Auth />
+            <Auth setUser={setUser} />
           </Route>
           <Route exact path={'/create'}>
-            <Create />
+            <Create user={user} />
           </Route>
           <Route exact path={'/detail/:id'}>
-            <Detail />
+            <Detail user={user} />
           </Route>
           <Route exact path={'/logout'}>
-            <Logout />
+            <Logout setUser={setUser} />
           </Route>
         </Switch>
       </div>
-      ;
     </Router>
   );
 }

@@ -3,10 +3,11 @@ import { Redirect } from 'react-router-dom';
 import { signUpUser, signInUser } from '../services/fetch-utils';
 import '../Styles/Form.css';
 
-export default function Form() {
+export default function Form({ setUser }) {
   const [userEmail, setEmail] = useState('');
   const [userPassword, setPassword] = useState('');
   const [formType, setFormType] = useState('');
+  // const [refresh, setRefresh] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,17 +19,18 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formType);
     formType === 'in' ? handleSignIn() : handleSignUp();
   };
 
   const handleSignUp = async () => {
     const user = await signUpUser(userEmail, userPassword);
+    setUser(user);
     return <Redirect to={'/'}></Redirect>;
   };
 
   const handleSignIn = async () => {
     const user = await signInUser(userEmail, userPassword);
+    setUser(user);
     return <Redirect to={'/'}></Redirect>;
   };
 

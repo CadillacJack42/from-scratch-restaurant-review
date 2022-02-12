@@ -1,13 +1,11 @@
 import React from 'react';
 import AuthForm from '../Components/AuthForm';
-import { redirectIfLoggedIn } from '../services/fetch-utils';
 import '../Styles/Auth.css';
 
-export default function Auth() {
+export default function Auth({ setUser }) {
   return (
     <div>
-      {redirectIfLoggedIn()}
-      <AuthForm />
+      <AuthForm setUser={setUser} />
     </div>
   );
 }
