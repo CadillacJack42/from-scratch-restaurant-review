@@ -13,7 +13,7 @@ export default function ListView({ setRestaurant, restaurant }) {
         const data = await fetchAllRestaurants();
         !unmounted && setRestaurant(data);
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     };
 

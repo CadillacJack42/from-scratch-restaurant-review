@@ -22,7 +22,7 @@ export default function CommentForm({ restaurant, user, setReview }) {
       setComment('');
       setReview([...reviewData]);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

@@ -28,7 +28,7 @@ export default function Form({ setUser }) {
       setUser(user);
       user && setRefresh(true);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -38,7 +38,7 @@ export default function Form({ setUser }) {
       setUser(user);
       user && setRefresh(true);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

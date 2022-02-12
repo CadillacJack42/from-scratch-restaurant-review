@@ -35,7 +35,7 @@ export default function CreateForm() {
       await createRestaurant(newRestaurant);
       setRefresh(true);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

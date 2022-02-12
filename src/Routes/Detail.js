@@ -18,7 +18,7 @@ export default function Detail({ user }) {
         const rest = await fetchRestaurantById(id);
         setRestaurant(rest);
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     };
     getrestaurant();
@@ -30,7 +30,7 @@ export default function Detail({ user }) {
         const reviewData = await fetchReviews(id);
         setReviews(reviewData);
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     };
     getReview();
