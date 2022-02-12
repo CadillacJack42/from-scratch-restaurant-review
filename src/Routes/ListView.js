@@ -9,8 +9,12 @@ export default function ListView({ setRestaurant, restaurant }) {
   useEffect(() => {
     let unmounted = false;
     const getRestaurants = async () => {
-      const data = await fetchAllRestaurants();
-      !unmounted && setRestaurant(data);
+      try {
+        const data = await fetchAllRestaurants();
+        !unmounted && setRestaurant(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getRestaurants();

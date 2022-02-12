@@ -16,12 +16,14 @@ export default function CommentForm({ restaurant, user, setReview }) {
       review: comment,
       restaurant: restaurant.id,
     };
-    await createReview(review);
-
-    const reviewData = await fetchReviews(restaurant.id);
-
-    setComment('');
-    setReview([...reviewData]);
+    try {
+      await createReview(review);
+      const reviewData = await fetchReviews(restaurant.id);
+      setComment('');
+      setReview([...reviewData]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

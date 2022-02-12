@@ -14,16 +14,24 @@ export default function Detail({ user }) {
 
   useEffect(() => {
     const getrestaurant = async () => {
-      const rest = await fetchRestaurantById(id);
-      setRestaurant(rest);
+      try {
+        const rest = await fetchRestaurantById(id);
+        setRestaurant(rest);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getrestaurant();
   }, [id]);
 
   useEffect(() => {
     const getReview = async () => {
-      const reviewData = await fetchReviews(id);
-      setReviews(reviewData);
+      try {
+        const reviewData = await fetchReviews(id);
+        setReviews(reviewData);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getReview();
   }, [restaurant.id, id]);

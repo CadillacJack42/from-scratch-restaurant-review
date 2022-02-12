@@ -31,8 +31,12 @@ export default function CreateForm() {
       prices: expense,
       address,
     };
-    await createRestaurant(newRestaurant);
-    setRefresh(true);
+    try {
+      await createRestaurant(newRestaurant);
+      setRefresh(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
