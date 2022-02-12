@@ -1,6 +1,6 @@
 import './Styles/App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Nav from './Components/Nav';
+// import Nav from './Components/Nav';
 import Auth from './Routes/Auth';
 import Create from './Routes/Create';
 import Detail from './Routes/Detail';
@@ -11,6 +11,7 @@ import { fetchUser } from './services/fetch-utils';
 
 function App() {
   const [user, setUser] = useState('');
+  const [restaurant, setRestaurant] = useState([]);
 
   useEffect(() => {
     const currentUser = fetchUser();
@@ -33,7 +34,7 @@ function App() {
         </Route> */}
         <Switch>
           <Route exact path={'/'}>
-            <ListView />
+            <ListView setRestaurant={setRestaurant} restaurant={restaurant} />
           </Route>
           <Route exact path={'/auth'}>
             <Auth setUser={setUser} />

@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Restaurant from '../Components/Restaurant';
 import { fetchAllRestaurants } from '../services/fetch-utils';
 import '../Styles/ListView.css';
 
-export default function ListView() {
-  const [restaurant, setRestaurant] = useState([]);
+export default function ListView({ setRestaurant, restaurant }) {
+  // const [restaurant, setRestaurant] = useState([]);
 
   useEffect(() => {
     const getRestaurants = async () => {
       const data = await fetchAllRestaurants();
-      data && setRestaurant(data);
+      setRestaurant(data);
     };
 
     getRestaurants();
-  }, []);
+  }, [setRestaurant]);
   return (
     <div className="all-restaurants-container">
       {restaurant ? (
