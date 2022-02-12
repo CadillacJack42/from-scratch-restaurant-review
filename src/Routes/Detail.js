@@ -29,7 +29,7 @@ export default function Detail({ user }) {
   }, [restaurant.id]);
 
   return (
-    <div>
+    <div className="detail-item-container">
       <Restaurant restaurant={restaurant} />
       <Reviews reviews={reviews} />
       {user && <CommentForm restaurant={restaurant} user={user} setReview={setReviews} />}

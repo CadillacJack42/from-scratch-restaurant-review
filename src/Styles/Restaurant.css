@@ -1,0 +1,15 @@
+.list-display-items {
+    border: 1px solid black;
+    text-align: center;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+}
+
+.list-item-link {
+    color: black;
+}
+
+.list-item-link:hover {
+    color: rgb(127, 36, 135);
+}

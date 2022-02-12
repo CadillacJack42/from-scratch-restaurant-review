@@ -4,8 +4,8 @@ import '../Styles/Restaurant.css';
 
 export default function Restaurant({ restaurant }) {
   return (
-    <div>
-      <Link to={`/detail/${restaurant.id}`}>
+    <div className="list-display-items">
+      <Link to={`/detail/${restaurant.id}`} className="list-item-link">
         <h2>{restaurant.name}</h2>
         <p>Price Range : {restaurant.prices}</p>
         <p>Cuisine Type : {restaurant.cuisine}</p>

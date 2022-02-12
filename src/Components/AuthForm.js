@@ -7,7 +7,7 @@ export default function Form({ setUser }) {
   const [userEmail, setEmail] = useState('');
   const [userPassword, setPassword] = useState('');
   const [formType, setFormType] = useState('');
-  // const [refresh, setRefresh] = useState('');
+  const [refresh, setRefresh] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -25,18 +25,19 @@ export default function Form({ setUser }) {
   const handleSignUp = async () => {
     const user = await signUpUser(userEmail, userPassword);
     setUser(user);
-    return <Redirect to={'/'}></Redirect>;
+    user && setRefresh(true);
   };
 
   const handleSignIn = async () => {
     const user = await signInUser(userEmail, userPassword);
     setUser(user);
-    return <Redirect to={'/'}></Redirect>;
+    user && setRefresh(true);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="auth-form-subcontainer">
+      {refresh && <Redirect to={'/'} />}
+      <form onSubmit={handleSubmit} className="auth-form-proper">
         <label>
           Enter Email :<input value={userEmail} onChange={handleEmailChange}></input>
         </label>
@@ -44,12 +45,14 @@ export default function Form({ setUser }) {
           Enter Password :
           <input value={userPassword} onChange={handlePasswordChange} type="password"></input>
         </label>
-        <button onClick={() => setFormType('in')} type="submit">
-          Sign In
-        </button>
-        <button onClick={() => setFormType('up')} type="submit">
-          Sign Up
-        </button>
+        <div className="form-buttons">
+          <button onClick={() => setFormType('in')} type="submit">
+            Sign In
+          </button>
+          <button onClick={() => setFormType('up')} type="submit">
+            Sign Up
+          </button>
+        </div>
       </form>
     </div>
   );

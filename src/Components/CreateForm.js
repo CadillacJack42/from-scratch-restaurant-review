@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createRestaurant } from '../services/fetch-utils';
+import '../Styles/CreateForm.css';
 
 export default function CreateForm() {
   const [name, setName] = useState('');
@@ -35,9 +36,9 @@ export default function CreateForm() {
   };
 
   return (
-    <div>
+    <div className="create-form-container">
       {refresh && <Redirect to={'/'} />}
-      <form onSubmit={handleSubmit}>
+      <form className="create-form-proper" onSubmit={handleSubmit}>
         <label>
           Restaurant Name :<input onChange={handleNameChange} value={name}></input>
         </label>
@@ -53,9 +54,9 @@ export default function CreateForm() {
             <option value={'$$$$'}>$$$$</option>
             <option value={'$$$$$'}>$$$$$</option>
           </select>
-          <label>
-            Address :<input onChange={handleAddressChange} value={address}></input>
-          </label>
+        </label>
+        <label>
+          Address :<input onChange={handleAddressChange} value={address}></input>
         </label>
         <button>Submit</button>
       </form>

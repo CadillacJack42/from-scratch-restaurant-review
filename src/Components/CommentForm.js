@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import '../Styles/CommentForm.css';
 import { createReview, fetchReviews } from '../services/fetch-utils';
-import Reviews from './Reviews';
 
 export default function CommentForm({ restaurant, user, setReview }) {
   const [comment, setComment] = useState('');
@@ -26,9 +25,9 @@ export default function CommentForm({ restaurant, user, setReview }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className="comment-form-container">
+      <form className="comment-form-proper" onSubmit={handleSubmit}>
+        <label className="comment-form-label">
           Submit Review :
           <textarea name={'comment'} value={comment} onChange={handleChange}></textarea>
         </label>

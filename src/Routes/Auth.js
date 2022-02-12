@@ -4,7 +4,7 @@ import '../Styles/Auth.css';
 
 export default function Auth({ setUser }) {
   return (
-    <div>
+    <div className="auth-form-container">
       <AuthForm setUser={setUser} />
     </div>
   );

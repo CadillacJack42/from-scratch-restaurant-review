@@ -15,7 +15,7 @@ export default function ListView() {
   }, []);
 
   return (
-    <div>
+    <div className="all-restaurants-container">
       {restaurant ? (
         restaurant.map((spot, i) => {
           return <Restaurant restaurant={spot} key={spot + i} />;
