@@ -22,7 +22,7 @@ export const fetchUser = () => {
 export const checkAuth = () => {
   const user = fetchUser();
   // !user &&  />
-  return user ? null : <Redirect to={'/auth'} />;
+  return !user ? null : <Redirect to={'/auth'} />;
 };
 
 export const createRestaurant = async (restaurant) => {

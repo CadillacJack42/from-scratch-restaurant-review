@@ -23,15 +23,23 @@ export default function Form({ setUser }) {
   };
 
   const handleSignUp = async () => {
-    const user = await signUpUser(userEmail, userPassword);
-    setUser(user);
-    user && setRefresh(true);
+    try {
+      const user = await signUpUser(userEmail, userPassword);
+      setUser(user);
+      user && setRefresh(true);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const handleSignIn = async () => {
-    const user = await signInUser(userEmail, userPassword);
-    setUser(user);
-    user && setRefresh(true);
+    try {
+      const user = await signInUser(userEmail, userPassword);
+      setUser(user);
+      user && setRefresh(true);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
