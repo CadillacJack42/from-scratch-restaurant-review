@@ -10,7 +10,7 @@ export default function ListView({ setRestaurant, restaurant }) {
     let unmounted = false;
     const getRestaurants = async () => {
       const data = await fetchAllRestaurants();
-      setRestaurant(data);
+      !unmounted && setRestaurant(data);
     };
 
     getRestaurants();

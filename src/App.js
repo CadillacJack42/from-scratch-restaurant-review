@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     let unmounted = false;
     const currentUser = fetchUser();
-    currentUser && setUser(currentUser);
+    !unmounted && setUser(currentUser);
     return () => {
       unmounted = true;
     };
