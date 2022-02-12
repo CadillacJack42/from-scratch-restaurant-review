@@ -9,11 +9,11 @@ export default function ListView() {
   useEffect(() => {
     const getRestaurants = async () => {
       const data = await fetchAllRestaurants();
-      setRestaurant(data);
+      data && setRestaurant(data);
     };
+
     getRestaurants();
   }, []);
-
   return (
     <div className="all-restaurants-container">
       {restaurant ? (

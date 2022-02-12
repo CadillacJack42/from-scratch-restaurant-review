@@ -1,5 +1,5 @@
 import './Styles/App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Nav from './Components/Nav';
 import Auth from './Routes/Auth';
 import Create from './Routes/Create';
@@ -20,7 +20,17 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav user={user} />
+        <h1>Cadillac Jacks Restaurant Reviewer</h1>
+        <div>
+          <Link to={'/'}>Home</Link> {' | '}
+          {!user && <Link to={'/auth'}>SignIn/SignUp</Link>}
+          {user && <Link to={'/create'}>Create New Resaurant</Link>}
+          {user && ' | '}
+          {user && <Link to={'/logout'}>Logout</Link>}
+        </div>
+        {/* <Route>
+          <Nav user={user} />
+        </Route> */}
         <Switch>
           <Route exact path={'/'}>
             <ListView />
