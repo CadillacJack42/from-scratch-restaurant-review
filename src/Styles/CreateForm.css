@@ -1,0 +1,12 @@
+.create-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-form-proper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: flex-end;
+}

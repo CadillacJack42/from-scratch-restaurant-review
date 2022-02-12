@@ -1,0 +1,29 @@
+/* .auth-form-subcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.auth-form-proper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+label {
+    margin: 5px 0;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 125px;
+    margin: 5px auto;
+}
+
+button:hover {
+    cursor: pointer;
+}
