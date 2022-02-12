@@ -14,8 +14,12 @@ function App() {
   const [restaurant, setRestaurant] = useState([]);
 
   useEffect(() => {
+    let unmounted = false;
     const currentUser = fetchUser();
     currentUser && setUser(currentUser);
+    return () => {
+      unmounted = true;
+    };
   }, [user]);
 
   return (

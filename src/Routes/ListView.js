@@ -7,13 +7,18 @@ export default function ListView({ setRestaurant, restaurant }) {
   // const [restaurant, setRestaurant] = useState([]);
 
   useEffect(() => {
+    let unmounted = false;
     const getRestaurants = async () => {
       const data = await fetchAllRestaurants();
       setRestaurant(data);
     };
 
     getRestaurants();
+    return () => {
+      unmounted = true;
+    };
   }, [setRestaurant]);
+
   return (
     <div className="all-restaurants-container">
       {restaurant ? (
