@@ -26,7 +26,7 @@ export default function Detail({ user }) {
       setReviews(reviewData);
     };
     getReview();
-  }, [restaurant.id]);
+  }, [restaurant.id, id]);
 
   return (
     <div className="detail-item-container">

@@ -1,6 +1,6 @@
 import './Styles/App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './Components/Nav';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+// import Nav from './Components/Nav';
 import Auth from './Routes/Auth';
 import Create from './Routes/Create';
 import Detail from './Routes/Detail';
@@ -11,19 +11,34 @@ import { fetchUser } from './services/fetch-utils';
 
 function App() {
   const [user, setUser] = useState('');
+  const [restaurant, setRestaurant] = useState([]);
 
   useEffect(() => {
+    let unmounted = false;
     const currentUser = fetchUser();
-    currentUser && setUser(currentUser);
+    !unmounted && setUser(currentUser);
+    return () => {
+      unmounted = true;
+    };
   }, [user]);
 
   return (
     <Router>
       <div className="App">
-        <Nav user={user} />
+        <h1>Cadillac Jacks Restaurant Reviewer</h1>
+        <div>
+          <Link to={'/'}>Home</Link> {' | '}
+          {!user && <Link to={'/auth'}>SignIn/SignUp</Link>}
+          {user && <Link to={'/create'}>Create New Resaurant</Link>}
+          {user && ' | '}
+          {user && <Link to={'/logout'}>Logout</Link>}
+        </div>
+        {/* <Route>
+          <Nav user={user} />
+        </Route> */}
         <Switch>
           <Route exact path={'/'}>
-            <ListView />
+            <ListView setRestaurant={setRestaurant} restaurant={restaurant} />
           </Route>
           <Route exact path={'/auth'}>
             <Auth setUser={setUser} />

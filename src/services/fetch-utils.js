@@ -21,8 +21,8 @@ export const fetchUser = () => {
 
 export const checkAuth = () => {
   const user = fetchUser();
-
-  return !user && <Redirect to={'/auth'} />;
+  // !user &&  />
+  return user ? null : <Redirect to={'/auth'} />;
 };
 
 export const createRestaurant = async (restaurant) => {
